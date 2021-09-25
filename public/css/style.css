@@ -1,0 +1,252 @@
+/* Header */
+
+.navegacao {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 0;
+    align-items: center;
+    border-bottom: 1px solid #bbbbbb;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+}
+
+.navegacao a {
+    list-style: none;
+    color: #27b67c;
+}
+
+.navegacao a:hover {
+    list-style: none;
+    color: #27b67c;
+}
+
+.logo {
+    font-size: 3rem;
+    color: #27b67c;
+    padding-bottom: 10px;
+}
+
+.logo a:hover {
+    color: #145239;
+    transition: .3s;
+    text-decoration: none;
+}
+
+.navegacao ul {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    align-items: center;
+}
+
+.navegacao ul li a:hover {
+    text-decoration: none;
+    color: #145239;
+    transition: .5s;
+}
+
+.navegacao ul li {
+    padding-left: 25px;
+    color: #27b67c;
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: circular std medium, Roboto, sans-serif;
+}
+
+
+/* Rodape */
+
+
+/* Home */
+
+.introducao-home {
+    color: #139661;
+    font-size: 4rem;
+    padding-top: 60px;
+    font-style: normal;
+    letter-spacing: .8px;
+}
+
+.introducao-home:hover {
+    color: #145239;
+    transition: .7s;
+}
+
+.introducao-home::after {
+    content: '|';
+    margin-left: 5px;
+    opacity: 1;
+    animation: pisca .7s infinite;
+}
+
+@keyframes pisca {
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+
+/* Cadastrar */
+
+.subtitulo {
+    text-align: center;
+    margin: 20px 0;
+    color: #139661;
+    font-family: circular std book, Roboto, sans-serif;
+    font-weight: bold;
+    font-style: normal;
+    font: 24px;
+    width: 100%;
+}
+
+.subtitulo::after {
+    content: "";
+    padding: 2px;
+    background-color: #139661;
+    margin: 0 auto;
+    display: block;
+    max-width: 10rem;
+}
+
+.formulario label {
+    font-family: circular std book, Roboto, sans-serif;
+    font-weight: 400;
+    color: #145239;
+    letter-spacing: 1.5px;
+    font-size: 1.1rem;
+}
+
+.formulario input {
+    border: 1px solid #27b67c;
+    font-family: circular std book, Roboto, sans-serif;
+}
+
+.formulario input:hover {
+    border-color: #225541;
+}
+
+
+/* Listar */
+
+.tabela {
+    font-family: circular std book, Roboto, sans-serif;
+    font-size: 1.1rem;
+    color: #145239;
+}
+
+.tabela.table {
+    border-color: #139661;
+}
+
+.link a {
+    color: #27b67c;
+    font-weight: bold;
+}
+
+.link a:hover {
+    color: #145239;
+    text-decoration: none;
+}
+
+.link button {
+    color: #27b67c;
+    font-weight: bold;
+    border: none;
+}
+
+.link button:hover {
+    color: #145239;
+    text-decoration: none;
+}
+
+.tabela th {
+    text-align: center;
+    color: #145239;
+}
+
+.tabela td {
+    text-align: center;
+}
+
+.buscar input {
+    border: 2px solid #27b67c;
+    font-style: italic;
+}
+
+
+/* Erro */
+
+.error {
+    text-align: center;
+    font-size: 3.4rem;
+    color: #145239;
+    font-family: circular std book, Roboto, sans-serif;
+}
+
+#load {
+    height: 40px;
+    max-width: 40px;
+    padding: 30px;
+    color: #27b67c;
+    border: 10px solid;
+    border-radius: 100%;
+    border-top-color: transparent;
+    margin: 0 auto;
+    box-shadow: 0 2px 2px rgba(6, 10, 5, .4);
+    animation: load 1.5s linear infinite;
+}
+
+@keyframes load {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Login */
+.login {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #DDD;
+}
+
+.form-login {
+    flex-basis: 450px;
+}
+
+.card-header {
+    text-align: center;
+}
+
+.title-login {
+    color: #27b67c;
+    font-family: circular std book, Roboto, sans-serif;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.card-body label {
+    font-family: circular std book, Roboto, sans-serif;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Admin */
+
+.admin-home {
+    margin-top: 20px;
+}
+
+.admin-home h2 {
+    text-align: center;
+}
