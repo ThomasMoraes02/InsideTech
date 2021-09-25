@@ -17,7 +17,7 @@ define("DB_PASS", "aws123456");
 
 
 // Remova a última barra "/" da URL
-define("BASE_URL", "http://localhost/projetos/insidetech");
+define("BASE_URL", "http://localhost/projetos/techinside");
 // define("BASE_URL", "https://insidetechtgti.000webhostapp.com");
 
 define("REQUEST", $_SERVER['REQUEST_URI']);

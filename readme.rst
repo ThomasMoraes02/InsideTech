@@ -1,5 +1,5 @@
 ###################
-Semexe
+Inside Tech
 ###################
 
 Informações Gerais para utilização do Sistema
@@ -50,4 +50,4 @@ As constantes de banco de dados fica a critério de configuração do servidor.
 
 
 
-Thomas Moraes - 10/05/2021
+Thomas Moraes - 25/09/2021
