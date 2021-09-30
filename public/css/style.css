@@ -250,3 +250,12 @@
 .admin-home h2 {
     text-align: center;
 }
+
+.btn-admin {
+    border: none;
+}
+
+.btn-admin:hover {
+    color: #13c980;
+    transition: .3s;
+}

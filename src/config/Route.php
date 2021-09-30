@@ -52,6 +52,10 @@ class Route
                 $controller_admin->cadastrar();
                 break;
 
+            case "$path/adm-deletar":
+                $controller_admin->deletar();
+                break;
+
             case "$path/home":
                 $controller->index();
                 break;

@@ -34,4 +34,13 @@ class Admin_Model extends Model
         $stmt->execute();
     }
 
+    public function deleteAdm($adm_id)
+    {
+        $sql = "DELETE FROM tb_admin WHERE id_admin = $adm_id";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+    }
+
 }

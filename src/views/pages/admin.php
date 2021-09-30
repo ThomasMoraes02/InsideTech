@@ -41,7 +41,7 @@
                             <th scope="col">ID</th>
                             <th scope="col">Nome</th>
                             <th scope="col">E-mail</th>
-                            <th scope="col">Ações</th>
+                            <th scope="col" class="text-center"><i class="fas fa-trash-alt"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -51,7 +51,12 @@
                             <th scope="row"><?php echo $admin['id_admin'] ?></th>
                             <td><?php echo $admin['nome_admin'] ?></td>
                             <td><?php echo $admin['email_admin'] ?></td>
-                            <td> Deletar </td>
+                            <form method="POST" action="<?= BASE_URL ?>/adm-deletar">
+                                <td class="text-center">
+                                    <button class="btn-admin"><i class="fas fa-trash-alt" style="color: #27b67c;"></i></button>
+                                </td>
+                                <input id="id" type="hidden" name="adm_id" value="<?php echo $admin['id_admin'] ?>">
+                            </form>
                         </tr>
                             <?php endforeach; ?>
                         <?php endif ?>

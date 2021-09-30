@@ -39,4 +39,15 @@ class Admin
 
         $this->redirect("admin");
     }
+
+    public function deletar()
+    {
+        $adm_id = trim($_POST['adm_id']);
+
+        if(!empty($adm_id)) {
+            $this->model->deleteAdm($adm_id);
+        }
+
+        $this->redirect("admin");
+    }
 }
