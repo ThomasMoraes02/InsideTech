@@ -1,3 +1,7 @@
+<?php if($header == "disabled"): ?>
+    <input type="hidden" id="header-disabled" value="disabled">
+<?php endif; ?>
+
 <section>
     <div class="container">
         <div class="row">

@@ -4,10 +4,13 @@ namespace Src\config;
 
 use Exception;
 use Src\controllers\Web;
+use Src\controllers\Auth;
 use Src\controllers\Admin;
 
 class Route
 {
+    public $url;
+
     public function __construct(string $url)
     {
         $this->url = $url;
@@ -23,6 +26,7 @@ class Route
     {
         $controller = new Web();
         $controller_admin = new Admin();
+        $controller_auth = new Auth();
 
         $parseUrl = parse_url(BASE_URL);
         $path = $parseUrl['path'];
@@ -33,15 +37,15 @@ class Route
 
         switch($request) {
             case "$path/":
-                $controller->login();
+                $controller_auth->login();
                 break;
 
             case "$path/autenticacao":
-                $controller->autenticacao();
+                $controller_auth->authentication();
                 break;
 
             case "$path/logout":
-                $controller->logout();
+                $controller_auth->logout();
                 break;
 
             case "$path/admin":
@@ -49,11 +53,11 @@ class Route
                 break;
 
             case "$path/adm-cadastrar":
-                $controller_admin->cadastrar();
+                $controller_admin->insert();
                 break;
 
             case "$path/adm-deletar":
-                $controller_admin->deletar();
+                $controller_admin->delete();
                 break;
 
             case "$path/home":
@@ -61,7 +65,7 @@ class Route
                 break;
             
             case "$path/cadastrar":
-                $controller->cadastrar();
+                $controller->insertView();
                 break;
             
             case "$path/insert":
@@ -69,11 +73,11 @@ class Route
                 break;
             
             case "$path/listar":
-                $controller->listar();
+                $controller->list();
                 break;
             
             case "$path/alterar":
-                $controller->alterar();
+                $controller->updateView();
                 break;
             
             case "$path/update":
@@ -85,11 +89,11 @@ class Route
                 break;
             
             case "$path/buscar":
-                $controller->buscar();
+                $controller->searchView();
                 break;
             
             default:
-                $controller->error();
+                $controller_auth->error();
                 break;
         }
         return;

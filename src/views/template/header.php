@@ -14,7 +14,7 @@
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 
-<nav class="mt-2">
+<nav>
     <div class="navegacao">
         <h2 class="logo"><a href="<?= BASE_URL ?>/home">Home</a></h2>
         <ul>
@@ -24,7 +24,7 @@
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Preferências
         </a>
-        <div class="dropdown-menu text-center" aria-labelledby="navbarDropdown">
+        <div class="dropdown-menu text-center color-he" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="#"><?= $_SESSION['firstname'] ?></a>
           <a class="dropdown-item" href="<?= BASE_URL ?>/admin">Admin</a>
           <div class="dropdown-divider"></div>

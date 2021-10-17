@@ -6,7 +6,8 @@ define("DB_DRIVER", "mysql");
 define("DB_HOST", "127.0.0.1");
 // define("DB_HOST", "awsmysqlserver.cpmmtmvm6bii.us-east-2.rds.amazonaws.com");
 
-define("DB_NAME", "users");
+define("DB_NAME", "tech_inside");
+// define("DB_NAME", "users");
 // define("DB_NAME", "test_database_aws");
 
 define("DB_USER", "root");

@@ -2,12 +2,16 @@
 
 namespace Src\controllers;
 
+use Src\helpers\CPF_Helper;
 use Src\models\Admin_Model;
 use Src\helpers\Global_Helper;
 
 class Admin
 {
     use Global_Helper;
+    use CPF_Helper;
+
+    public $model;
 
     public function __construct()
     {
@@ -30,17 +34,24 @@ class Admin
         $this->view($data, "admin");
     }
 
-    public function cadastrar()
+    public function insert()
     {
         $admin = $_POST;
-        $admin['senha_admin'] = password_hash($admin['senha'], PASSWORD_DEFAULT);
-        
-        $this->model->insertAdm($admin);
+
+        if($this->validaCPF($admin['cpf_admin']) != TRUE) {
+            $this->flashMessage("danger", "CPF no formato inválido");
+        } else {
+            $admin['cpf_admin'] = $this->removeFormatacaoCPF($admin['cpf_admin']);
+            $admin['telefone_admin'] = $this->removeFormatacaoTelefone($admin['telefone_admin']);
+            $admin['senha_admin'] = password_hash($admin['senha_admin'], PASSWORD_DEFAULT);
+
+            $this->model->insertAdm($admin);
+        }
 
         $this->redirect("admin");
     }
 
-    public function deletar()
+    public function delete()
     {
         $adm_id = trim($_POST['adm_id']);
 

@@ -19,6 +19,16 @@
                                     placeholder="Digite seu e-mail" required>
                             </div>
                             <div class="form-group">
+                                <label for="cpf">CPF</label>
+                                <input type="text" name="cpf_admin" id="cpf" class="form-control"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label for="telefone">Telefone</label>
+                                <input type="text" name="telefone_admin" id="telefone" class="form-control"
+                                    required>
+                            </div>
+                            <div class="form-group">
                                 <label for="senha">Senha</label>
                                 <input type="password" name="senha_admin" id="senha" class="form-control"
                                     placeholder="Defina uma senha" required>
@@ -35,7 +45,7 @@
                 </form>
             </div>
             <div class="col-md-6">
-                <table class="table table-striped table-bordered table-hover text-center">
+                <table class="table table-striped table-bordered table-hover text-center table-list">
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
@@ -49,8 +59,8 @@
                             <?php foreach($admins as $admin): ?>
                         <tr>
                             <th scope="row"><?php echo $admin['id_admin'] ?></th>
-                            <td><?php echo $admin['nome_admin'] ?></td>
-                            <td><?php echo $admin['email_admin'] ?></td>
+                            <td><?php echo $admin['name'] ?></td>
+                            <td><?php echo $admin['email'] ?></td>
                             <form method="POST" action="<?= BASE_URL ?>/adm-deletar">
                                 <td class="text-center">
                                     <button class="btn-admin"><i class="fas fa-trash-alt" style="color: #27b67c;"></i></button>
@@ -66,3 +76,7 @@
         </div>
     </div>
 </section>
+
+
+<?php unset($_SESSION['message']); ?>
+<?php unset($_SESSION['type']); ?>

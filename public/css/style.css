@@ -1,4 +1,6 @@
-/* Header */
+body {
+    background-color: #F9EAC3 !important;
+}
 
 .navegacao {
     display: flex;
@@ -8,11 +10,14 @@
     align-items: center;
     border-bottom: 1px solid #bbbbbb;
     box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+    padding-top: 8px;
+    background-color:#253858;
+    margin-bottom: 30px;
 }
 
 .navegacao a {
     list-style: none;
-    color: #27b67c;
+    color: #f4f5f7;
 }
 
 .navegacao a:hover {
@@ -27,7 +32,7 @@
 }
 
 .logo a:hover {
-    color: #145239;
+    color: #bce3f3;
     transition: .3s;
     text-decoration: none;
 }
@@ -42,13 +47,13 @@
 
 .navegacao ul li a:hover {
     text-decoration: none;
-    color: #145239;
+    color: #bce3f3;
     transition: .5s;
 }
 
 .navegacao ul li {
     padding-left: 25px;
-    color: #27b67c;
+    color: #bce3f3;
     font-size: 1.5rem;
     font-weight: bold;
     font-family: circular std medium, Roboto, sans-serif;
@@ -61,11 +66,16 @@
 /* Home */
 
 .introducao-home {
-    color: #139661;
+    color:#0052cc;
     font-size: 4rem;
     padding-top: 60px;
     font-style: normal;
     letter-spacing: .8px;
+}
+
+.color-he a {
+    color: #0052cc !important;
+    font-weight: bold;
 }
 
 .introducao-home:hover {
@@ -96,7 +106,7 @@
 .subtitulo {
     text-align: center;
     margin: 20px 0;
-    color: #139661;
+    color: #0052cc;
     font-family: circular std book, Roboto, sans-serif;
     font-weight: bold;
     font-style: normal;
@@ -107,7 +117,7 @@
 .subtitulo::after {
     content: "";
     padding: 2px;
-    background-color: #139661;
+    background-color: #0052cc;
     margin: 0 auto;
     display: block;
     max-width: 10rem;
@@ -116,20 +126,27 @@
 .formulario label {
     font-family: circular std book, Roboto, sans-serif;
     font-weight: 400;
-    color: #145239;
+    color: #0052cc;
     letter-spacing: 1.5px;
     font-size: 1.1rem;
 }
 
 .formulario input {
-    border: 1px solid #27b67c;
+    
     font-family: circular std book, Roboto, sans-serif;
 }
 
 .formulario input:hover {
-    border-color: #225541;
+    border-color: rgb(219, 136, 219);;
 }
 
+.formulario button {
+    background:#0052cc;
+}
+
+.form-buscar button {
+    background-color: #0052cc;
+}
 
 /* Listar */
 
@@ -174,7 +191,7 @@
 }
 
 .buscar input {
-    border: 2px solid #27b67c;
+    border: 2px solid #0052cc;
     font-style: italic;
 }
 
@@ -213,7 +230,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #DDD;
+    background-color: #F9EAC3;
 }
 
 .form-login {
@@ -225,7 +242,7 @@
 }
 
 .title-login {
-    color: #27b67c;
+    color: #0052cc;
     font-family: circular std book, Roboto, sans-serif;
     font-size: 22px;
     font-weight: bold;
@@ -239,6 +256,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.form-login button {
+    background-color: #0052cc;
 }
 
 /* Admin */
@@ -258,4 +279,31 @@
 .btn-admin:hover {
     color: #13c980;
     transition: .3s;
+}
+
+/* footer */
+.rodape {
+    position: fixed;
+    bottom:0;
+    right:0;
+    margin: 20px;
+    font-size: 1.8rem;
+    color: #0052cc;
+    font-weight: bold;
+}
+
+/* Tabelas */
+
+.table-list.table-bordered td, .table-bordered th {
+    border:2px solid #f3ce70 !important;
+}
+
+.table-list.th {
+    border-color: #b68917 !important;
+}
+
+.btn-update {
+    color: #0052cc !important;
+    background-color: #e0d9c8 !important;
+
 }

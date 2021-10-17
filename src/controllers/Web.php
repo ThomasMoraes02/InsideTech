@@ -9,9 +9,11 @@ use Src\models\Web_Model;
 use Throwable;
 
 class Web
-{
+{   
     use Global_Helper;
     use CPF_Helper;
+
+    public $model;
 
     public function __construct()
     {
@@ -22,58 +24,16 @@ class Web
         }
     }
 
-    public function login(): void
-    {
-        $data = array(
-            "title" => "Login",
-            "header" => "disabled",
-        );
-
-        $this->view($data, "login");
-    }
-
-    public function autenticacao(): void
-    {
-        $login = $_POST;
-
-        $email = $_POST['email'];
-
-        $admin = $this->model->getAdmin($email);
-
-        if(trim($admin['email_admin']) == trim($email)) {
-            if(password_verify($login['senha'], $admin['senha_admin'])) {
-                $name = explode(" ", $admin['nome_admin']);
-
-                $_SESSION['usuario_autenticado'] = $admin;
-                $_SESSION['firstname'] = $name[0];
-
-                $this->redirect("home");
-                exit;
-            }
-        }
-
-        $this->flashMessage("danger", "E-mail ou senha inválido!");
-        $this->redirect("");
-    }
-
-    public function logout(): void
-    {
-        unset($_SESSION['usuario_autenticado']);
-        unset($_SESSION['firstname']);
-
-        $this->redirect("");
-    }
-
     public function index(): void
     {   
-        if(empty($_SESSION['usuario_autenticado'])) $this->redirect("");
+        if(empty($_SESSION['user_auth'])) $this->redirect("");
 
         $this->view(["message" => "Welcome to the system..."]);
     }
 
-    public function cadastrar(): void
+    public function insertView(): void
     {
-        if(empty($_SESSION['usuario_autenticado'])) $this->redirect("");
+        if(empty($_SESSION['user_auth'])) $this->redirect("");
         if(!isset($this->model)) $this->redirect("home");
            
         $this->view(["title" => "Cadastrar"],"cadastrar");
@@ -98,36 +58,36 @@ class Web
         $this->redirect("cadastrar");
     }
 
-    public function listar(): void
+    public function list(): void
     {
-        if(empty($_SESSION['usuario_autenticado'])) $this->redirect("");
+        if(empty($_SESSION['user_auth'])) $this->redirect("");
         if (!isset($this->model)) $this->redirect("home");
 
-        $usuarios = $this->model->getUsers();
+        $users = $this->model->getUsers();
 
         $data = array(
             "title" => "Listar",
-            "usuarios" => $usuarios,
+            "users" => $users,
         );
 
         $this->view($data,"listar");
     }
 
-    public function alterar(): void
+    public function updateView(): void
     {
-        if(empty($_SESSION['usuario_autenticado'])) $this->redirect("");
+        if(empty($_SESSION['user_auth'])) $this->redirect("");
         if (!isset($this->model)) $this->redirect("home");
 
         try {
             $id = $_POST['id'];
-            $usuario = $this->model->getUserById($id);
+            $user = $this->model->getUserById($id);
         } catch(Throwable $e) {
             $this->redirect("home");
         }
 
         $data = array(
             "title" => "Alterar",
-            "usuario" => $usuario
+            "user" => $user
         );
 
         $this->view($data,"alterar");
@@ -161,26 +121,16 @@ class Web
         $this->redirect("listar");
     }
 
-    public function buscar(): void
+    public function searchView(): void
     {
         $filtro = $_POST['filtro'];
-        $usuarios = $this->model->search($filtro);
+        $users = $this->model->search($filtro);
 
         $data = array(
             "title" => "Listar",
-            "usuarios" => $usuarios,
+            "users" => $users,
         );
 
         $this->view($data, "listar");
-    }
-
-    public function error(): void
-    {
-        $data = array(
-            "title" => "Página não Encontrada!",
-            "message" => "Ooops! Página não encontrada"
-        );
-
-        $this->view($data, "erro");
     }
 }
