@@ -39,7 +39,7 @@
                             <?php if(isset($_SESSION['message']) && isset($_SESSION['type'])): ?>
                             <span class="lead text-danger"><?= $_SESSION['message'] ?></span>
                             <?php endif ?>
-                            <button type="submit" class="bnt btn-lg btn-success">Cadastrar</button>
+                            <button type="submit" style="background: #0052cc;" class="bnt btn-lg btn-success">Cadastrar</button>
                         </div>
                     </div>
                 </form>
@@ -63,7 +63,7 @@
                             <td><?php echo $admin['email'] ?></td>
                             <form method="POST" action="<?= BASE_URL ?>/adm-deletar">
                                 <td class="text-center">
-                                    <button class="btn-admin"><i class="fas fa-trash-alt" style="color: #27b67c;"></i></button>
+                                    <button class="btn-admin"><i class="fas fa-trash-alt" style="color: #0052cc;"></i></button>
                                 </td>
                                 <input id="id" type="hidden" name="adm_id" value="<?php echo $admin['id_admin'] ?>">
                             </form>

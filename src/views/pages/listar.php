@@ -42,6 +42,7 @@
                         <th scope="col">CPF</th>
                         <th scope="col">Telefone</th>
                         <th scope="col">CEP</th>
+                        <th scope="col" class="text-center"><i class="fas fa-edit"></th>
                         <th scope="col" class="text-center"><i class="fas fa-trash-alt"></th>
                     </tr>
                 </thead>
@@ -50,20 +51,20 @@
                     <?php foreach($users as $user): ?>
                     <tr>
                         <th scope="row"><?= $user['id_user'] ?></th>
-                        <td class="link">
-                            <form action="alterar" method="post">
-                                <input type="hidden" name="id" value="<?= $user['id_user'] ?>">
-                                <button class="btn-update"><?= $user['name'] ?></button>
-                            </form>
-                        </td>
+                        <td class="link"><?= $user['name'] ?></td>
                         <td><?= $user['email'] ?></td>
                         <td class="cpf"><?= $user['cpf'] ?></td>
                         <td class="telefone"><?= $user['phone'] ?></td>
                         <td class="cep"><?= $user['zipcode'] ?></td>
                         <!-- <td class="text-center"><a href="<?= BASE_URL ?>/delete/<?= $user['id_user'] ?>"><i class="fas fa-trash-alt"
                                     style="color: #27b67c;"></i></a></td> -->
+                        <form action="alterar" method="post">
+                        <td class="text-center"><button style="border:none; background:none;"><i class="fas fa-edit" style="color: #0052cc;"></i></button></td>
+                        <input type="hidden" name="id" value="<?= $user['id_user'] ?>">
+                        </form>
+
                         <td class="text-center delete-ajax"><a href="#" data-id="<?= $user['id_user'] ?>"
-                                data-action="delete"><i class="fas fa-trash-alt" style="color: #27b67c;"></i></a></td>
+                                data-action="delete"><i class="fas fa-trash-alt" style="color: #0052cc;"></i></a></td>
                     </tr>
                     <?php endforeach; ?>
                     <?php else: ?>

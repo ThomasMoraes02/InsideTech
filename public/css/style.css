@@ -201,7 +201,7 @@ body {
 .error {
     text-align: center;
     font-size: 3.4rem;
-    color: #145239;
+    color: #0052cc;
     font-family: circular std book, Roboto, sans-serif;
 }
 
@@ -209,7 +209,7 @@ body {
     height: 40px;
     max-width: 40px;
     padding: 30px;
-    color: #27b67c;
+    color: #0052cc;
     border: 10px solid;
     border-radius: 100%;
     border-top-color: transparent;
