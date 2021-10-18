@@ -32,13 +32,14 @@ class Web_Model extends Model
     {
         extract($user);
 
-        $sql_user = "INSERT INTO user (name, email, cpf, phone) VALUES (:nome, :email, :cpf, :telefone)";
+        $sql_user = "INSERT INTO user (name, email, cpf, phone, fk_admin_id) VALUES (:nome, :email, :cpf, :telefone, :fk_admin_id)";
         $stmt = $this->db->prepare($sql_user);
 
         $stmt->bindParam(":nome", $nome);
         $stmt->bindParam(":cpf", $cpf);
         $stmt->bindParam(":email", $email);
         $stmt->bindParam(":telefone", $telefone);
+        $stmt->bindParam(":fk_admin_id", $fk_admin_id);
 
         $continue = $stmt->execute();
 

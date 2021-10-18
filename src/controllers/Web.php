@@ -50,6 +50,7 @@ class Web
             $user['cpf'] = $this->removeFormatacaoCPF($_POST['cpf']);
             $user['telefone'] = $this->removeFormatacaoTelefone($_POST['telefone']);
             $user['cep'] = $this->removeFormatacaoCEP($_POST['cep']);
+            $user['fk_admin_id'] = $_SESSION['user_auth']['id_admin'];
             
             $this->model->insert($user);
             $this->flashMessage("success", "Usuário cadastrado com sucesso!");

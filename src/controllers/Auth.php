@@ -36,11 +36,10 @@ class Auth
 
     public function authentication(): void
     {
-        $login = $_POST;
+        $this->email = $_POST['email'];
+        $this->password = $_POST['senha'];
 
-        $email = $_POST['email'];
-
-        $admin = $this->model->getAuth($email);
+        $admin = $this->model->getAuth($this->email);
         
         if(!empty($admin)) {
             $password = $this->model->getAuthPassword($admin['id_admin']);
@@ -49,8 +48,8 @@ class Auth
             }
         }
 
-        if(trim($admin['email']) == trim($email)) {
-            if(password_verify($login['senha'], $admin['password'])) {
+        if(trim($admin['email']) == trim($this->email)) {
+            if(password_verify($this->password, $admin['password'])) {
                 $name = explode(" ", $admin['name']);
 
                 $_SESSION['user_auth'] = $admin;
