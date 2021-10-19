@@ -11,7 +11,7 @@ class Route
 {
     public $url;
 
-    public function __construct(string $url)
+    public function __construct($url)
     {
         $this->url = $url;
         $this->setRoute($url);
@@ -22,82 +22,89 @@ class Route
         return $this->url;
     }
 
+    private static function GenerateInstances(): array
+    {
+        return [
+            "Auth" => new Auth(),
+            "Admin" => new Admin(),
+            "Web" => new Web()
+        ];
+    }
+
     private function setRoute($request):void 
     {
-        $controller = new Web();
-        $controller_admin = new Admin();
-        $controller_auth = new Auth();
-
         $parseUrl = parse_url(BASE_URL);
         $path = $parseUrl['path'];
         
+        $controller = Route::GenerateInstances();
+
         if(!$path) {
             throw new Exception("Rota não configurada! Defina a URL em: src\config\config.php -> BASE_URL", 1);
         }
 
         switch($request) {
             case "$path/":
-                $controller_auth->login();
+                $controller['Auth']->login();
                 break;
 
             case "$path/autenticacao":
-                $controller_auth->authentication();
+                $controller['Auth']->authentication();
                 break;
 
             case "$path/logout":
-                $controller_auth->logout();
+                $controller['Auth']->logout();
                 break;
 
             case "$path/admin":
-                $controller_admin->index();
+                $controller['Admin']->index();
                 break;
 
             case "$path/adm-cadastrar":
-                $controller_admin->insert();
+                $controller['Admin']->insert();
                 break;
 
             case "$path/adm-deletar":
-                $controller_admin->delete();
+                $controller['Admin']->delete();
                 break;
 
             case "$path/adm-logs":
-                $controller_admin->logs();
+                $controller['Admin']->logs();
                 break;
 
             case "$path/home":
-                $controller->index();
+                $controller['Web']->index();
                 break;
             
             case "$path/cadastrar":
-                $controller->insertView();
+                $controller['Web']->insertView();
                 break;
             
             case "$path/insert":
-                $controller->insert();
+                $controller['Web']->insert();
                 break;
             
             case "$path/listar":
-                $controller->list();
+                $controller['Web']->list();
                 break;
             
             case "$path/alterar":
-                $controller->updateView();
+                $controller['Web']->updateView();
                 break;
             
             case "$path/update":
-                $controller->update();
+                $controller['Web']->update();
                 break;
             
             case "$path/delete":
-                $controller->delete();
+                $controller['Web']->delete();
                 break;
             
             case "$path/buscar":
-                $controller->searchView();
+                $controller['Web']->searchView();
                 break;
             
             default:
-                $controller_auth->error();
+                $controller['Auth']->error();
                 break;
         }
         return;
