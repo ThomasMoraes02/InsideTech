@@ -3,10 +3,11 @@
 namespace Src\controllers;
 
 use Exception;
+use Throwable;
+use Src\models\Web_Model;
 use Src\helpers\CPF_Helper;
 use Src\helpers\Global_Helper;
-use Src\models\Web_Model;
-use Throwable;
+use Src\services\LogSingleton;
 
 class Web
 {   
@@ -22,6 +23,8 @@ class Web
         } catch(Exception $e) {
             $this->view(["message" => "Erro: {$e->getMessage()}"]);
         }
+
+        $instanceLog = LogSingleton::getInstance();
     }
 
     public function index(): void
@@ -53,6 +56,14 @@ class Web
             $user['fk_admin_id'] = $_SESSION['user_auth']['id_admin'];
             
             $this->model->insert($user);
+
+            $dataLog = [
+                "auth" => $_SESSION['user_auth'],
+                "user" => $user
+            ];
+
+            LogSingleton::createLog($dataLog, "web-insert");
+
             $this->flashMessage("success", "Usuário cadastrado com sucesso!");
         }
 
@@ -107,6 +118,13 @@ class Web
             $user['telefone'] = $this->removeFormatacaoTelefone($_POST['telefone']);
             $user['cep'] = $this->removeFormatacaoCEP($_POST['cep']);
 
+            $dataLog = [
+                "auth" => $_SESSION['user_auth'],
+                "user" => $user
+            ];
+
+            LogSingleton::createLog($dataLog, "web-update");
+
             $this->model->update($user, $user['id']);
 
             $this->flashMessage("success", "Usuário alterado com sucesso!");
@@ -117,6 +135,15 @@ class Web
     public function delete(): void 
     {
         $id = $_POST['id'];
+
+        $user = $this->model->getUserById($id);
+
+        $dataLog = [
+            "auth" => $_SESSION['user_auth'],
+            "user" => $user
+        ];
+
+        LogSingleton::createLog($dataLog, "web-delete");
 
         $this->model->delete($id);
         $this->redirect("listar");

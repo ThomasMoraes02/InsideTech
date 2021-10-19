@@ -5,6 +5,7 @@ namespace Src\controllers;
 use Exception;
 use Src\models\Auth_Model;
 use Src\helpers\Global_Helper;
+use Src\services\LogSingleton;
 
 class Auth
 {
@@ -21,6 +22,8 @@ class Auth
         } catch(Exception $e) {
             $this->view(["message" => "Erro: {$e->getMessage()}"]);
         }
+
+        $instanceLog = LogSingleton::getInstance();
     }
 
     public function login(): void
@@ -55,6 +58,12 @@ class Auth
                 $_SESSION['user_auth'] = $admin;
                 $_SESSION['firstname'] = $name[0];
 
+                $data = [
+                    "auth" => $_SESSION['user_auth']
+                ];
+
+                LogSingleton::createLog($data, "auth-login");
+
                 $this->redirect("home");
                 exit;
             }
@@ -66,6 +75,12 @@ class Auth
 
     public function logout(): void
     {
+        $data = [
+            "auth" => $_SESSION['user_auth']
+        ];
+
+        LogSingleton::createLog($data, "auth-logout");
+
         unset($_SESSION['user_auth']);
         unset($_SESSION['firstname']);
 
