@@ -54,4 +54,13 @@ class Admin_Model extends Model
         $stmt->execute();
     }
 
+    public function getLogs()
+    {
+        $sql = "SELECT l.id_log, l.fk_id_admin, a.name as name_admin, l.message_log, l.fk_id_user, u.name as name_user, l.type_log, l.timestamp_create_log FROM log l 
+        LEFT JOIN user u ON u.id_user = l.fk_id_user
+        JOIN admin a ON a.id_admin = l.fk_id_admin
+        ORDER BY id_log DESC";
+
+        return $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

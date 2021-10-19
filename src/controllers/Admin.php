@@ -61,4 +61,22 @@ class Admin
 
         $this->redirect("admin");
     }
+
+    public function logs()
+    {
+        $logs = $this->model->getLogs();
+
+        function dateFormat($date)
+        {
+            return date_format($date, "H:i:s - d/m/Y");
+        }
+
+        $data = array(
+            "title" => "Logs",
+            "logs" => $logs,
+            
+        );
+
+        $this->view($data, "logs");
+    }
 }

@@ -60,6 +60,10 @@ class Route
                 $controller_admin->delete();
                 break;
 
+            case "$path/adm-logs":
+                $controller_admin->logs();
+                break;
+
             case "$path/home":
                 $controller->index();
                 break;

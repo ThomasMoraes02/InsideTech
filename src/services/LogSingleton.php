@@ -40,26 +40,22 @@ class LogSingleton
             
             case 'auth-logout':
                 $log_message = "saiu do sistema";
-
                 break;
 
             case 'web-insert':
                 $log_message = "cadastrou um novo usuario";
                 $id = $instanceLogModel->getLastInsertId();
                 $id_user = $id['id_user'];
-
                 break;
             
             case 'web-update':
                 $log_message = "atualizou o cadastro do usuario";
                 $id_user = $data['user']['id'];
-
                 break; 
 
             case 'web-delete':
                 $log_message = "deletou o cadastro do usuario " . $data['user']['name'];
                 $id_user = $data['user']['id_user'];
-
                 break;    
         }
 

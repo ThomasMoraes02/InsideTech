@@ -27,6 +27,7 @@
         <div class="dropdown-menu text-center color-he" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="#"><?= $_SESSION['firstname'] ?></a>
           <a class="dropdown-item" href="<?= BASE_URL ?>/admin">Admin</a>
+          <a class="dropdown-item" href="<?= BASE_URL ?>/adm-logs">Logs</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="<?= BASE_URL ?>/logout">Logout</a>
         </div>
