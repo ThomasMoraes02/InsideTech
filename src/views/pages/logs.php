@@ -1,7 +1,8 @@
 <section>
     <div class="container">
         <div class="col-md-12">
-            <table class="table table-striped table-bordered table-hover text-center table-list">
+            <table id="table-logs"
+                class="table-pagination table table-striped table-bordered table-hover text-center table-list">
                 <thead>
                     <tr>
                         <th scope="col">ID</th>

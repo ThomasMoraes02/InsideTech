@@ -307,3 +307,40 @@ body {
     background-color: #e0d9c8 !important;
 
 }
+
+/* Paginação Logs */
+.table-pagination th{
+    background: #253858;
+    color: #fff;
+    border: none;
+}
+
+.table-pagination tr:hover:not(th) {
+    background-color: rgba(237, 28, 64, .1);
+}
+
+#buttons-pagination {
+    text-align: center;
+}
+
+#buttons-pagination input[type="button"] {
+    transition: all .3s;
+    border: 1px solid #ddd;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+#buttons-pagination input[type="button"]:not(.active) {
+    background-color: transparent;
+}
+
+#buttons-pagination .active {
+    background-color: #253858;
+    color: #fff;
+}
+
+#buttons-pagination input[type="button"]:hover:not(.active) {
+    background-color: #ddd;
+}
