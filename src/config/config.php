@@ -18,7 +18,8 @@ define("DB_PASS", "");
 
 
 // Remova a última barra "/" da URL
-define("BASE_URL", "http://localhost/projetos/techinside");
+// A integração requer HTTPS
+define("BASE_URL", "https://localhost/projetos/techinside");
 // define("BASE_URL", "https://insidetechtgti.000webhostapp.com");
 
 define("REQUEST", $_SERVER['REQUEST_URI']);

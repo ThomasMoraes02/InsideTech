@@ -5,7 +5,9 @@ namespace Src\controllers;
 use Exception;
 use Src\models\Auth_Model;
 use Src\helpers\Global_Helper;
+use Src\models\Facebook_Model;
 use Src\services\LogSingleton;
+use Src\controllers\FacebookAuthenticate;
 
 class Auth
 {
@@ -14,6 +16,7 @@ class Auth
     public $email;
     public $password;
     public $model;
+    public $is_facebook = false;
 
     public function __construct()
     {
@@ -39,6 +42,12 @@ class Auth
 
     public function authentication(): void
     {
+        $this->is_facebook = $_POST['fb_access'];
+        if($this->is_facebook == true) {
+            $facebook = new FacebookAuthenticate();
+            $facebook->FacebookAuthentication();
+        }
+
         $this->email = $_POST['email'];
         $this->password = $_POST['senha'];
 
@@ -56,7 +65,9 @@ class Auth
                 $name = explode(" ", $admin['name']);
 
                 $_SESSION['user_auth'] = $admin;
+                $_SESSION['user_type'] = "simple_admin";
                 $_SESSION['firstname'] = $name[0];
+                $_SESSION['picture'] = false;
 
                 $data = [
                     "auth" => $_SESSION['user_auth']
@@ -79,10 +90,17 @@ class Auth
             "auth" => $_SESSION['user_auth']
         ];
 
-        LogSingleton::createLog($data, "auth-logout");
+        $type = "auth-logout";
+        if($_SESSION['user_type'] == "facebook_admin") {
+            $type = "auth-logout-facebook";
+        }
+
+        LogSingleton::createLog($data, $type);
 
         unset($_SESSION['user_auth']);
         unset($_SESSION['firstname']);
+        unset($_SESSION['user_type']);
+        unset($_SESSION['picture']);
 
         $this->redirect("");
     }

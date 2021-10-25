@@ -75,7 +75,7 @@ $('#telefone').mask('(99) 99999-9999');
 $('.telefone').mask('(99) 99999-9999');
 
 // Valida Cep
-$('.cep').mask('99.999-999');
+$('.cep').mask('999999-99');
 
 
 // Requisição AJAX para Deletar
@@ -130,7 +130,7 @@ const interval = setInterval(() => {
 
 // Paginação de Logs
 var $table = document.getElementById("table-logs"),
-    $n = 5,
+    $n = 12,
     $rowCount = $table.rows.length,
     $firstRow = $table.rows[0].firstElementChild.tagName,
     $hasHead = ($firstRow === "TH"),

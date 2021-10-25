@@ -25,19 +25,26 @@
             <li><a href="<?= BASE_URL ?>/cadastrar">Cadastrar</a></li>
             <li><a href="<?= BASE_URL ?>/listar">Listar</a></li>
             <li>
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Preferências
-        </a>
-        <div class="dropdown-menu text-center color-he" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#"><?= $_SESSION['firstname'] ?></a>
-          <a class="dropdown-item" href="<?= BASE_URL ?>/admin">Admin</a>
-          <a class="dropdown-item" href="<?= BASE_URL ?>/adm-logs">Logs</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="<?= BASE_URL ?>/logout">Logout</a>
-        </div>
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Preferências
+                </a>
+                <div class="dropdown-menu text-center color-he" aria-labelledby="navbarDropdown">
+                    <?php if($_SESSION['picture'] != false): ?>
+                    <div>
+                        <img class="fb_picture" src="<?= $_SESSION['picture'] ?>">
+                    </div>
+                    <?php endif; ?>
+                    <a class="dropdown-item" href="#"><?= $_SESSION['firstname'] ?></a>
+                    <a class="dropdown-item" href="<?= BASE_URL ?>/admin">Admin</a>
+                    <a class="dropdown-item" href="<?= BASE_URL ?>/adm-logs">Logs</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" onclick="logout()" href="<?= BASE_URL ?>/logout">Logout</a>
+                </div>
             </li>
         </ul>
     </div>
 </nav>
+
 
 <body>

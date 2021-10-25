@@ -37,9 +37,17 @@ class LogSingleton
             case 'auth-login':
                 $log_message = "acessou o sistema";
                 break;
+
+            case 'auth-login-facebook':
+                $log_message = "acessou o sistema com o facebook";
+                break;
             
             case 'auth-logout':
                 $log_message = "saiu do sistema";
+                break;
+
+            case 'auth-logout-facebook':
+                $log_message = "saiu do sistema com o facebook";
                 break;
 
             case 'web-insert':

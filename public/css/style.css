@@ -344,3 +344,15 @@ body {
 #buttons-pagination input[type="button"]:hover:not(.active) {
     background-color: #ddd;
 }
+
+.fb-logout {
+    visibility: hidden;
+    background-color: #1877f2;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.fb-logout.active {
+    visibility: visible;
+}
