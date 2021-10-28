@@ -42,7 +42,7 @@ class Facebook_Model extends Model
     {
         $sql = "SELECT id_admin FROM admin ORDER BY id_admin DESC LIMIT 1";
 
-        return $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+        return $this->db->query($sql)->fetch(PDO::FETCH_ASSOC);
     }
 
     public function getUserFacebookId($id)

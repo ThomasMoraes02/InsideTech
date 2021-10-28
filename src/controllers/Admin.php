@@ -26,6 +26,12 @@ class Admin
     {
         $admins = $this->model->getAdmins();
 
+        $admins = array_filter($admins, function($admin) {
+            if(empty($admin['fb_token']) && empty($admin['fb_picture'])) {
+                return $admin;
+            }
+        });
+
         $data = array(
             "title" => "Admin",
             "admins" => $admins

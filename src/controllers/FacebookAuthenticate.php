@@ -42,7 +42,8 @@ class FacebookAuthenticate
             $this->model->insertUserFacebook($fb_data);
 
             $lastId = $this->model->getLastIdFacebook();
-            $fb_user = $this->model->getUserFacebookId($lastId);
+
+            $fb_user = $this->model->getUserFacebookId($lastId['id_admin']);
 
             if($fb_user) {
                 $this->FacebookSetUserSession($fb_user);
